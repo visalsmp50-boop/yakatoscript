@@ -673,8 +673,248 @@
 
 
 
+
+<style id="telegram-entry-gate-styles">
+  #telegram-entry-gate {
+    position: fixed !important;
+    inset: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    min-height: 100vh !important;
+    box-sizing: border-box !important;
+    z-index: 2147483646 !important;
+    display: grid;
+    place-items: center;
+    overflow-y: auto;
+    padding: 24px;
+    isolation: isolate;
+    background:
+      radial-gradient(ellipse at 15% 15%, rgba(37, 169, 255, .20), transparent 38%),
+      radial-gradient(ellipse at 85% 82%, rgba(128, 76, 255, .20), transparent 38%),
+      rgba(4, 7, 15, .88);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    color: #f7faff;
+  }
+  #telegram-entry-gate::before,
+  #telegram-entry-gate::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    width: 270px;
+    height: 270px;
+    border-radius: 50%;
+    filter: blur(70px);
+    opacity: .28;
+    pointer-events: none;
+  }
+  #telegram-entry-gate::before {
+    top: 8%;
+    left: 8%;
+    background: #19a7ff;
+  }
+  #telegram-entry-gate::after {
+    right: 7%;
+    bottom: 7%;
+    background: #7958ff;
+  }
+  #telegram-entry-gate .tg-gate-card {
+    position: relative;
+    width: min(490px, 100%);
+    padding: clamp(26px, 5vw, 42px);
+    text-align: center;
+    border: 1px solid rgba(180, 211, 255, .22);
+    border-radius: 30px;
+    background: linear-gradient(145deg, rgba(20, 31, 53, .96), rgba(8, 13, 25, .97) 65%);
+    box-shadow: 0 30px 100px rgba(0, 0, 0, .55), inset 0 1px 0 rgba(255,255,255,.07);
+    animation: tg-card-in .55s cubic-bezier(.2,.8,.2,1) both;
+  }
+  #telegram-entry-gate .tg-gate-card::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(47,179,255,.75), transparent 38%, rgba(140,99,255,.65));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+  #telegram-entry-gate .tg-gate-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+    padding: 8px 12px;
+    border: 1px solid rgba(91, 183, 255, .25);
+    border-radius: 999px;
+    background: rgba(29, 133, 220, .10);
+    color: #a8dcff;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+  }
+  #telegram-entry-gate .tg-gate-pill-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #35c3ff;
+    box-shadow: 0 0 12px #35c3ff;
+  }
+  #telegram-entry-gate .tg-gate-icon {
+    width: 86px;
+    height: 86px;
+    display: grid;
+    place-items: center;
+    margin: 0 auto 22px;
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 27px;
+    background: linear-gradient(145deg, #32b9ff, #1674ef 58%, #6557f5);
+    box-shadow: 0 14px 38px rgba(28, 139, 255, .3), inset 0 1px 0 rgba(255,255,255,.35);
+  }
+  #telegram-entry-gate .tg-gate-icon svg {
+    width: 43px;
+    height: 43px;
+    display: block;
+    fill: #fff;
+    filter: drop-shadow(0 3px 5px rgba(0,0,0,.16));
+  }
+  #telegram-entry-gate h2 {
+    margin: 0 0 13px;
+    color: #f7faff !important;
+    font-size: clamp(26px, 5vw, 34px);
+    font-weight: 850;
+    letter-spacing: -.045em;
+    line-height: 1.12;
+  }
+  #telegram-entry-gate .tg-gate-subtitle {
+    margin: 0 auto 26px;
+    max-width: 360px;
+    color: #b6c4da !important;
+    line-height: 1.8;
+    font-size: 14px;
+  }
+  #telegram-entry-gate .tg-gate-actions {
+    display: grid;
+    gap: 12px;
+  }
+  #telegram-entry-gate .tg-gate-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 54px;
+    padding: 14px 18px;
+    border: 1px solid rgba(184, 205, 238, .2);
+    border-radius: 16px;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 800;
+    text-decoration: none;
+    cursor: pointer;
+    color: #dce8fa !important;
+    background: rgba(255,255,255,.045);
+    transition: transform .2s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
+  }
+  #telegram-entry-gate .tg-gate-btn:hover {
+    transform: translateY(-2px);
+    border-color: rgba(128, 195, 255, .55);
+    background: rgba(255,255,255,.09);
+  }
+  #telegram-entry-gate .tg-gate-btn-primary {
+    border: 0;
+    color: #fff !important;
+    background: linear-gradient(100deg, #1599ff, #2877f4 55%, #6557f5);
+    box-shadow: 0 12px 28px rgba(32, 126, 255, .25), inset 0 1px 0 rgba(255,255,255,.25);
+  }
+  #telegram-entry-gate .tg-gate-btn-primary:hover {
+    color: #fff !important;
+    background: linear-gradient(100deg, #37aaff, #3988ff 55%, #796bff);
+    box-shadow: 0 16px 34px rgba(32, 126, 255, .34);
+  }
+  #telegram-entry-gate .tg-gate-btn-primary svg {
+    width: 19px;
+    height: 19px;
+    fill: currentColor;
+  }
+  #telegram-entry-gate .tg-gate-arrow {
+    position: absolute;
+    right: 17px;
+    font-size: 18px;
+    opacity: .8;
+  }
+  #telegram-entry-gate .tg-gate-btn:disabled {
+    opacity: .42;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+    filter: saturate(.55);
+  }
+  #telegram-entry-gate .tg-gate-btn:disabled:hover {
+    border-color: rgba(184, 205, 238, .2);
+    background: rgba(255,255,255,.045);
+  }
+  #telegram-entry-gate .tg-gate-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: 22px;
+    padding-top: 17px;
+    border-top: 1px solid rgba(255,255,255,.08);
+    color: #8393ad !important;
+    text-align: left;
+    font-size: 11px;
+    line-height: 1.65;
+  }
+  #telegram-entry-gate .tg-gate-note span:first-child {
+    color: #65bfff;
+    font-size: 14px;
+  }
+  body.telegram-gate-open { overflow: hidden !important; }
+  #telegram-entry-gate, #telegram-entry-gate * { box-sizing: border-box; }
+  @keyframes tg-card-in {
+    from { opacity: 0; transform: translateY(18px) scale(.975); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  @media (max-width: 480px) {
+    #telegram-entry-gate { padding: 16px; }
+    #telegram-entry-gate .tg-gate-card { border-radius: 24px; }
+    #telegram-entry-gate .tg-gate-icon { width: 76px; height: 76px; border-radius: 24px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #telegram-entry-gate .tg-gate-card { animation: none; }
+    #telegram-entry-gate .tg-gate-btn { transition: none; }
+  }
+</style>
+
 </head>
 <body>
+
+<div id="telegram-entry-gate" role="dialog" aria-modal="true" aria-labelledby="tg-gate-title">
+  <div class="tg-gate-card">
+    <div class="tg-gate-pill"><span class="tg-gate-pill-dot"></span>JOIN TELEGRAM</div>
+    <div class="tg-gate-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.7 4.4 18.5 20c-.24 1.1-.88 1.36-1.78.85l-4.93-3.63-2.38 2.29c-.26.26-.48.48-.98.48l.35-5.02 9.14-8.26c.4-.35-.09-.55-.62-.2L6 13.72 1.15 12.2c-1.05-.33-1.07-1.05.22-1.56L20.3 3.28c.87-.32 1.63.21 1.4 1.12Z"/></svg>
+    </div>
+    <h2 id="tg-gate-title">Unlock the Website</h2>
+    <p class="tg-gate-subtitle">join group telegram</p>
+    <div class="tg-gate-actions">
+      <a class="tg-gate-btn tg-gate-btn-primary" id="tg-gate-join"
+         href="https://t.me/assassin1782"
+         target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21.7 4.4 18.5 20c-.24 1.1-.88 1.36-1.78.85l-4.93-3.63-2.38 2.29c-.26.26-.48.48-.98.48l.35-5.02 9.14-8.26c.4-.35-.09-.55-.62-.2L6 13.72 1.15 12.2c-1.05-.33-1.07-1.05.22-1.56L20.3 3.28c.87-.32 1.63.21 1.4 1.12Z"/></svg>
+        Join Telegram Group<span class="tg-gate-arrow">↗</span>
+      </a>
+      <button class="tg-gate-btn" id="tg-gate-continue" type="button" disabled>Join Telegram first to continue <span aria-hidden="true">→</span></button>
+    </div>
+    <div class="tg-gate-note"><span aria-hidden="true">ⓘ</span><span> សូម join group telegram ជាមុនសិនដើម្បី join ទៅ website បាន ❤️</span></div>
+  </div>
+</div>
+
 <div id="yakato-intro" aria-label="YAKATO SCRIPT intro">
   <div class="logo intro-logo">
     <svg viewBox="0 0 1100 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="YAKATO SCRIPT">
@@ -1323,6 +1563,35 @@ new MutationObserver(addYakatoBeam).observe(yakatoGrid, {
       toggle.setAttribute('aria-expanded', 'false');
       toggle.setAttribute('aria-label', 'Open navigation menu');
     }
+  });
+})();
+</script>
+
+
+<script id="telegram-entry-gate-script">
+(() => {
+  const gate = document.getElementById("telegram-entry-gate");
+  const joinButton = document.getElementById("tg-gate-join");
+  const continueButton = document.getElementById("tg-gate-continue");
+  if (!gate || !joinButton || !continueButton) return;
+
+  document.body.classList.add("telegram-gate-open");
+
+  // The continue button only becomes available after the visitor opens the Telegram invite.
+  // A static HTML page cannot verify actual Telegram group membership; that requires a bot + backend.
+  joinButton.addEventListener("click", () => {
+    continueButton.disabled = false;
+    continueButton.textContent = "I've Joined — Enter Website →";
+  });
+
+  continueButton.addEventListener("click", () => {
+    if (continueButton.disabled) return;
+    gate.style.opacity = "0";
+    gate.style.transition = "opacity .35s ease";
+    window.setTimeout(() => {
+      gate.remove();
+      document.body.classList.remove("telegram-gate-open");
+    }, 360);
   });
 })();
 </script>
