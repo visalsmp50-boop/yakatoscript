@@ -438,7 +438,7 @@
   display: block; width: min(94vw, 1100px); max-height: 75vh;
   object-fit: contain; mix-blend-mode: screen;
 }
-@media (max-width: 700px)
+@media (max-width: 700px) {
   #yakato-intro .logo-video { width: 98vw; max-height: 65vh; }
 }
 </style>
@@ -482,6 +482,8 @@
     /* Keep the video behind the page content but above the page canvas. */
     html, body { min-height: 100%; }
     body {
+      min-height: 100vh;
+      min-height: 100svh;
       position: relative !important;
       isolation: isolate !important;
       background: #080808 !important;
